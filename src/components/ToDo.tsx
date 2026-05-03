@@ -4,7 +4,8 @@ import { useState } from "react"
 
 export default function ToDo() {
   const [title, setTitle] = useState("")
-  const [tasks, setTasks] = useState<{ title: string; completed: boolean }[]>([])
+  const [description, setDescription] = useState("")
+  const [tasks, setTasks] = useState<{ title: string; completed: boolean; description?: string }[]>([])
 
   const toggleTodo = (index: number) => {
     setTasks((prev) =>
@@ -20,10 +21,13 @@ export default function ToDo() {
     const newTask = {
       title: title.trim(),
       completed: false,
+      description: description.trim() 
     }
 
     setTasks((prev) => [...prev, newTask])
     setTitle("")
+    setDescription("")
+
   }
 
   const removeTask = () => {
@@ -39,8 +43,12 @@ export default function ToDo() {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <input type="text" placeholder="Task Description" />
-
+      <input
+        type="text"
+        placeholder="Task Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
 
       <button onClick={addTask}>Add Task</button>
       <button onClick={removeTask}>Remove Task</button>
@@ -56,7 +64,13 @@ export default function ToDo() {
           </li>
         ))}
 
-        
+        {tasks.map((task, index) => (
+          <li key={index} style={{ marginBottom: "10px" }}>
+            <strong>{task.title}</strong>
+            {task.description && <p>{task.description}</p>}
+          </li>
+        ))}
+
       </ul>
 
 
