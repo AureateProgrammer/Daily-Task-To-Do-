@@ -4,13 +4,22 @@ import { useState } from "react"
 
 export default function ToDo() {
   const [title, setTitle] = useState("")
-  const [tasks, setTasks] = useState<{ title: string }[]>([])
+  const [tasks, setTasks] = useState<{ title: string; completed: boolean }[]>([])
+
+  const toggleTodo = (index: number) => {
+    setTasks((prev) =>
+      prev.map((task, i) =>
+        i === index ? { ...task, completed: !task.completed } : task,
+      ),
+    )
+  }
 
   const addTask = () => {
     if (!title.trim()) return
 
     const newTask = {
       title: title.trim(),
+      completed: false,
     }
 
     setTasks((prev) => [...prev, newTask])
@@ -38,7 +47,13 @@ export default function ToDo() {
 
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>{task.title}</li>
+          <li
+            key={index}
+            onClick={() => toggleTodo(index)}
+            style={{ textDecoration: task.completed ? "line-through" : "none" }}
+          >
+            {task.title}
+          </li>
         ))}
 
         
