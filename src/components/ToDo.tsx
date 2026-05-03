@@ -53,19 +53,16 @@ export default function ToDo() {
       <button onClick={addTask}>Add Task</button>
       <button onClick={removeTask}>Remove Task</button>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul id="task-list" style={{ listStyle: "none", padding: 0 }}>
         {tasks.map((task, index) => (
           <li
             key={index}
             onClick={() => toggleTodo(index)}
-            style={{ textDecoration: task.completed ? "line-through" : "none" }}
+            style={{
+              textDecoration: task.completed ? "line-through" : "none",
+              marginBottom: "10px",
+            }}
           >
-            {task.title}
-          </li>
-        ))}
-
-        {tasks.map((task, index) => (
-          <li key={index} style={{ marginBottom: "10px" }}>
             <strong>{task.title}</strong>
             {task.description && <p>{task.description}</p>}
           </li>

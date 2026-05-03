@@ -27,3 +27,16 @@ button {
     color: white;
     cursor: pointer;
 }   
+
+button:hover {
+    background-color: #3f4953;
+}
+
+.task-list {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: rgb(201, 156, 156);
+
+
+}
