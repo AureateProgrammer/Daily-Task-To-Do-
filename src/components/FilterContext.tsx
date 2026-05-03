@@ -7,6 +7,7 @@ export const FilterContext = () => {
         setFilter(newFilter)
         console.log('Current filter is now ', newFilter)
     }
+    
     return (
         <div style={{ marginTop: '20px', textAlign: 'center' }}>
             <button onClick={() => handleFilterChange('All')}>All</button>
