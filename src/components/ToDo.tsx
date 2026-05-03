@@ -35,15 +35,15 @@ export default function ToDo() {
   }
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "0 auto" }}>
-      <h1 >ToDo</h1>
+      <div className="task-container" style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', textAlign: 'center' }}>
+      <h1>Daily Tasks</h1>
       <input
         type="text"
         placeholder="Task Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <input
+      <input 
         type="text"
         placeholder="Task Description"
         value={description}
@@ -53,18 +53,15 @@ export default function ToDo() {
       <button onClick={addTask}>Add Task</button>
       <button onClick={removeTask}>Remove Task</button>
 
-      <ul id="task-list" style={{ listStyle: "none", padding: 0 }}>
+        <ul className="task-list">
         {tasks.map((task, index) => (
           <li
             key={index}
             onClick={() => toggleTodo(index)}
-            style={{
-              textDecoration: task.completed ? "line-through" : "none",
-              marginBottom: "10px",
-            }}
+              className={`task-item ${task.completed ? "completed" : ""}`}
           >
-            <strong>{task.title}</strong>
-            {task.description && <p>{task.description}</p>}
+              <strong className="task-title">{task.title}</strong>
+              {task.description && <p className="task-desc">{task.description}</p>}
           </li>
         ))}
 
