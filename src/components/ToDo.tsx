@@ -31,8 +31,8 @@ export default function ToDo() {
   }
 
   return (
-    <div>
-      <h1>ToDo</h1>
+    <div style={{ padding: "20px", maxWidth: "400px", margin: "0 auto" }}>
+      <h1 >ToDo</h1>
       <input
         type="text"
         placeholder="Task Title"
@@ -45,7 +45,7 @@ export default function ToDo() {
       <button onClick={addTask}>Add Task</button>
       <button onClick={removeTask}>Remove Task</button>
 
-      <ul>
+      <ul style={{ listStyle: "none", padding: 0 }}>
         {tasks.map((task, index) => (
           <li
             key={index}

@@ -8,7 +8,7 @@ export const FilterContext = () => {
         console.log('Current filter is now ', newFilter)
     }
     return (
-        <div>
+        <div style={{ marginTop: '20px', textAlign: 'center' }}>
             <button onClick={() => handleFilterChange('All')}>All</button>
             <button onClick={() => handleFilterChange('Active')}>Active</button>
             <button onClick={() => handleFilterChange('Completed')}>Completed</button>
